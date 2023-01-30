@@ -28,6 +28,7 @@ public class BrickManager {
         double startingX = 10.0;
         double spacing = 10.0;
         double y = startingY;
+        int rowCounter = 0;
         for (int i = 0; i < numRows; i++) {
             double x = startingX;
             for(int j = 0; j < numCols; j++) {
@@ -37,7 +38,9 @@ public class BrickManager {
                 x += (boxWidth +spacing);
             }
             y += 11.0 + spacing;
+            rowCounter ++;
         }
+        System.out.println(rowCounter);
     }
 
     /**

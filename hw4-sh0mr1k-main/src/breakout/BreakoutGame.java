@@ -9,7 +9,7 @@ import edu.macalester.graphics.Point;
  */
 public class BreakoutGame {
     private static final int CANVAS_WIDTH = 600;
-    private static final int CANVAS_HEIGHT = 800;
+    private static final int CANVAS_HEIGHT = 600;
     private CanvasWindow canvas;
     private BrickManager brickManager;
     private BreakoutBall ball;
@@ -19,8 +19,8 @@ public class BreakoutGame {
         canvas = new CanvasWindow("Breakout!", CANVAS_WIDTH, CANVAS_HEIGHT);
         brickManager = new BrickManager(canvas);
         double initialAngle = Math.toRadians(Math.random()*180.0 - 1); 
-        this.ball = new BreakoutBall(300, 400, initialAngle, 600, 800);
-        this.paddle = new Paddle(275, 795);
+        this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600);
+        this.paddle = new Paddle(275, 395);
         resetGame();
     }
 
