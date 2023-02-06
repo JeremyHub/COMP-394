@@ -10,6 +10,8 @@ public class BrickManager {
 
     private CanvasWindow canvas;
     private List<Brick> bricks;
+    private int rowCounter;
+    private int colCounter;
     public int numRows = 5;
     public int numCols = 10;
     public double boxWidth = 49.0;
@@ -28,7 +30,8 @@ public class BrickManager {
         double startingX = 10.0;
         double spacing = 10.0;
         double y = startingY;
-        int rowCounter = 0;
+        rowCounter = 0;
+        colCounter = 0;
         for (int i = 0; i < numRows; i++) {
             double x = startingX;
             for(int j = 0; j < numCols; j++) {
@@ -36,11 +39,21 @@ public class BrickManager {
                 canvas.add(brick);
                 bricks.add(brick);
                 x += (boxWidth +spacing);
+                colCounter += 1;
             }
             y += 11.0 + spacing;
-            rowCounter ++;
+            rowCounter += 1;
+
         }
-        System.out.println(rowCounter);
+        colCounter = colCounter / rowCounter;
+    }
+
+    public int getBrickRows() {
+        return rowCounter;
+    }
+
+    public int getBrickCols() {
+        return colCounter;
     }
 
     /**
