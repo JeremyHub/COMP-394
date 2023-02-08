@@ -34,5 +34,13 @@ class BrickManagerTest {
 
     @Test
     void removeAllBricks() {
+        CanvasWindow canvas = new CanvasWindow("Breakout!", 600, 600);
+        BrickManager bm = new BrickManager(canvas);
+        
+        bm.generateBricks(); 
+        assertEquals(50, bm.getBrickCols()*bm.getBrickRows());
+        bm.removeAllBricks();
+        assertEquals(0, bm.getListSize());
+                
     }
 }

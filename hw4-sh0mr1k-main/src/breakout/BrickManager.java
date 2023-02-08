@@ -99,6 +99,12 @@ public class BrickManager {
         for (Brick b : bricks) {
             canvas.remove(b);
         }
+        rowCounter = 0;
+        colCounter = 0;
         bricks.clear();
+    }
+
+    public int getListSize() {
+        return bricks.size();
     }
 }
