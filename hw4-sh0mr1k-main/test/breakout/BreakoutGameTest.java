@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BreakoutGameTest {
 
-    @Test
     @ParameterizedTest
     @ValueSource(ints={0,10,50,100,150,200,300,350,360})
     void moveBall(int angle) {
