@@ -6,10 +6,11 @@ import edu.macalester.graphics.GraphicsGroup;
 public class BreakoutBall extends GraphicsGroup{
 
     public static final double BALL_RADIUS = 2.5;
-    private static final double INITIAL_SPEED = 50.0;
     private static final double INITIAL_X_POSITION = 300.0;
     private static final double INITIAL_Y_POSITION = 400.0;
+    private static final double INITIAL_SPEED = 50.0;
 
+    private double speed;
     private double centerX;
     private double centerY;
     private double initialAngle;
@@ -26,18 +27,25 @@ public class BreakoutBall extends GraphicsGroup{
             double centerY,
             double initialAngle,
             double maxX,
-            double maxY) {
+            double maxY,
+            double speed) {
         this.centerX = INITIAL_X_POSITION;
         this.centerY = INITIAL_Y_POSITION;
         ballShape = new Ellipse(centerX, centerY, BreakoutBall.BALL_RADIUS*2, BreakoutBall.BALL_RADIUS*2);
         initialAngle = -((Math.random())*180);
         this.maxX = maxX;
         this.maxY = maxY;
+        this.speed = speed;
         this.lifeCount = 1;
         double initialAngleRadians = Math.toRadians(initialAngle);
-        this.xVelocity = INITIAL_SPEED * Math.cos(initialAngleRadians);
-        this.yVelocity = INITIAL_SPEED * (-1) * Math.sin(initialAngleRadians);
+        this.xVelocity = speed * Math.cos(initialAngleRadians);
+        this.yVelocity = speed * (-1) * Math.sin(initialAngleRadians);
     }
+
+    public BreakoutBall(double centerX, double centerY, double initialAngle, double maxX, double maxY) {
+        this(centerX, centerY, initialAngle, maxX, maxY, INITIAL_SPEED);
+    }
+
     /**
      * Gets the X value of the center coordinate of the cannonball.
      * @return center's X coordinate
@@ -143,8 +151,8 @@ public class BreakoutBall extends GraphicsGroup{
      */
     public void newRandomDrop(double initialAngle) {
         double initialAngleRadians = Math.toRadians(initialAngle);
-        this.xVelocity = INITIAL_SPEED * Math.cos(initialAngleRadians);
-        this.yVelocity = INITIAL_SPEED * (-1) * Math.sin(initialAngleRadians);
+        this.xVelocity = speed * Math.cos(initialAngleRadians);
+        this.yVelocity = speed * (-1) * Math.sin(initialAngleRadians);
     }
 
 

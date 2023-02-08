@@ -19,7 +19,7 @@ public class BreakoutGame {
         canvas = new CanvasWindow("Breakout!", CANVAS_WIDTH, CANVAS_HEIGHT);
         brickManager = new BrickManager(canvas);
         double initialAngle = Math.toRadians(Math.random()*180.0 - 1); 
-        this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600);
+        this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600, 150);
         this.paddle = new Paddle(275, 395);
         resetGame();
     }
