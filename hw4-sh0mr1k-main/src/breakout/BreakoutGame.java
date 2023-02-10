@@ -8,8 +8,8 @@ import edu.macalester.graphics.Point;
  * The game of Breakout.
  */
 public class BreakoutGame {
-    private static final int CANVAS_WIDTH = 600;
-    private static final int CANVAS_HEIGHT = 600;
+    public static final int CANVAS_WIDTH = 600;
+    public static final int CANVAS_HEIGHT = 600;
     private CanvasWindow canvas;
     private BrickManager brickManager;
     private BreakoutBall ball;
@@ -19,8 +19,8 @@ public class BreakoutGame {
         canvas = new CanvasWindow("Breakout!", CANVAS_WIDTH, CANVAS_HEIGHT);
         brickManager = new BrickManager(canvas);
         double initialAngle = Math.toRadians(Math.random()*180.0 - 1); 
-        this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600, 150);
-        this.paddle = new Paddle(275, 395);
+        this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600);
+        this.paddle = new Paddle(CANVAS_WIDTH/2, CANVAS_HEIGHT*0.8);
         resetGame();
     }
 
@@ -117,7 +117,7 @@ public class BreakoutGame {
      */
     public void loseGame() {
         canvas.removeAll();
-        GraphicsText lose = new GraphicsText("You Lost!", 250, 400);
+        GraphicsText lose = new GraphicsText("You Lost!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2);
         canvas.add(lose);
     }
 
@@ -126,7 +126,7 @@ public class BreakoutGame {
      */
     public void winGame() {
         canvas.removeAll();
-        GraphicsText win = new GraphicsText("You Won!", 250, 400);
+        GraphicsText win = new GraphicsText("You Won!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2);
         canvas.add(win);
     }
 }

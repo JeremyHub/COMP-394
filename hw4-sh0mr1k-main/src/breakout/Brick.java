@@ -41,11 +41,11 @@ public class Brick extends Line {
     public boolean intersects(BreakoutBall ball) {
         double ballXPosition = ball.getCenterX();
         double ballYPosition = ball.getCenterY();
-        if(ballXPosition < getCenter().getX()+29.5 & ballXPosition > getCenter().getX() - 29.5) {
-            if(ballYPosition > getY() - 5 & ballYPosition < getY()) {
+        if(ballXPosition < getCenter().getX()+(BRICK_WIDTH/2) && ballXPosition > getCenter().getX() - (BRICK_WIDTH/2)) {
+            if(ballYPosition > getY() - (BRICK_HEIGHT/2) & ballYPosition < getY()) {
                 return true;
             }
-            else if(ballYPosition < getY() + 5 & ballYPosition > getY()) {
+            else if(ballYPosition < getY() + (BRICK_HEIGHT/2) && ballYPosition > getY()) {
                 return true;
             }
         }

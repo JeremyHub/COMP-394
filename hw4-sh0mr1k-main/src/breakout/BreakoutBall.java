@@ -3,9 +3,11 @@ package breakout;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
+import java.awt.Color;
+
 public class BreakoutBall extends GraphicsGroup{
 
-    public static final double BALL_RADIUS = 2.5;
+    public static final double BALL_RADIUS = 7;
     private static final double INITIAL_X_POSITION = 300.0;
     private static final double INITIAL_Y_POSITION = 400.0;
     private static final double INITIAL_SPEED = 50.0;
@@ -114,6 +116,12 @@ public class BreakoutBall extends GraphicsGroup{
             rebound();
         }
         
+        int r = (int) (255 * (ballShape.getCenter().getY() / (maxY)));
+        int g = (int) (255 * (ballShape.getCenter().getY() / (maxY)));
+        int b = 255;
+
+        ballShape.setFillColor(new Color(r,g,b));
+        
     }
 
     /**
@@ -127,13 +135,13 @@ public class BreakoutBall extends GraphicsGroup{
      * Rebounds the ball when it hits a wall.
      */
     public void rebound() {
-        if(getCenterX() <= (0+BALL_RADIUS*2)) {
+        if(getCenterX() <= (BALL_RADIUS*2)) {
             xVelocity = -1*xVelocity;
         }
         if(getCenterX() >= (maxX - BALL_RADIUS*2)) {
             xVelocity = -1*xVelocity;
         }
-        if(getCenterY() <= (0+BALL_RADIUS*2)) {
+        if(getCenterY() <= (BALL_RADIUS*2)) {
             yVelocity = -1*yVelocity;
         }
     }

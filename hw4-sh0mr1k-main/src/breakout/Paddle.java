@@ -33,8 +33,8 @@ public class Paddle extends Line {
     public boolean hitsBall(BreakoutBall ball) {
         double ballXPosition = ball.getCenterX();
         double ballYPosition = ball.getCenterY();
-        if((ballXPosition < getCenter().getX()+30 & ballXPosition > getCenter().getX() - 30) 
-        & (ballYPosition > (getY() - 5))) {
+        if((ballXPosition < getCenter().getX()+30 && ballXPosition > getCenter().getX() - 30) 
+        && (ballYPosition > (getY() - 5) && ballYPosition < (getY() + 5))) {
             return true;
         }
         return false;

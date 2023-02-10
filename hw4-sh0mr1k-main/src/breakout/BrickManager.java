@@ -14,7 +14,6 @@ public class BrickManager {
     private int colCounter;
     public int numRows = 5;
     public int numCols = 10;
-    public double boxWidth = 49.0;
     public static final Color BRICK_COLOR = new Color(201, 150, 216, 55);
 
     public BrickManager(CanvasWindow canvas) {
@@ -26,22 +25,21 @@ public class BrickManager {
      * Generates the bricks to be hit.
      */
     public void generateBricks() {
-        double startingY = 75.0;
-        double startingX = 10.0;
-        double spacing = 10.0;
+        double startingY = BreakoutGame.CANVAS_HEIGHT*0.1;
+        double spacing = BreakoutGame.CANVAS_WIDTH/60;
         double y = startingY;
         rowCounter = 0;
         colCounter = 0;
         for (int i = 0; i < numRows; i++) {
-            double x = startingX;
+            double x = spacing;
             for(int j = 0; j < numCols; j++) {
                 Brick brick = new Brick(x, y, BRICK_COLOR);
                 canvas.add(brick);
                 bricks.add(brick);
-                x += (boxWidth +spacing);
+                x += (Brick.BRICK_WIDTH +spacing);
                 colCounter += 1;
             }
-            y += 11.0 + spacing;
+            y += Brick.BRICK_HEIGHT + spacing;
             rowCounter += 1;
 
         }
