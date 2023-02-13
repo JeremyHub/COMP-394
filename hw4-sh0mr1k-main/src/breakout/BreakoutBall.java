@@ -189,4 +189,11 @@ public class BreakoutBall extends GraphicsGroup{
         }
         return false;
     }
+
+    /**
+     * getter for the ball's shape
+     */
+    public Ellipse getBallShape() {
+        return ballShape;
+    }
 }
