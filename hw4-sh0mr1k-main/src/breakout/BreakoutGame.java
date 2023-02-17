@@ -17,6 +17,11 @@ public class BreakoutGame {
 
     public BreakoutGame() {
         canvas = new CanvasWindow("Breakout!", CANVAS_WIDTH, CANVAS_HEIGHT);
+        this.reset();
+    }
+
+    private void reset() {
+        canvas.removeAll();
         brickManager = new BrickManager(canvas);
         double initialAngle = Math.toRadians(Math.random()*180.0 - 1); 
         this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600);
@@ -26,7 +31,7 @@ public class BreakoutGame {
 
     public static void main(String[] args){
         BreakoutGame game = new BreakoutGame();
-           game.run();  
+        game.run();
     }
 
     /**
@@ -55,6 +60,9 @@ public class BreakoutGame {
     public void run() {
         canvas.animate(() -> {
             moveBall(ball);
+            if (ball.getLifeCount() == 4 ) {
+                this.reset();
+            }
         });
         canvas.onMouseMove((event) -> {
             movePaddle(paddle, event.getPosition());
@@ -119,6 +127,8 @@ public class BreakoutGame {
         canvas.removeAll();
         GraphicsText lose = new GraphicsText("You Lost!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2);
         canvas.add(lose);
+        canvas.draw();
+        canvas.pause(1000);
     }
 
     /**
