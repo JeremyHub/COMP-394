@@ -4,6 +4,8 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Point;
 
+import java.lang.Math;
+
 /**
  * The game of Breakout.
  */
@@ -17,11 +19,6 @@ public class BreakoutGame {
 
     public BreakoutGame() {
         canvas = new CanvasWindow("Breakout!", CANVAS_WIDTH, CANVAS_HEIGHT);
-        this.reset();
-    }
-
-    private void reset() {
-        canvas.removeAll();
         brickManager = new BrickManager(canvas);
         double initialAngle = Math.toRadians(Math.random()*180.0 - 1); 
         this.ball = new BreakoutBall(300, 400, initialAngle, 600, 600);
@@ -31,7 +28,7 @@ public class BreakoutGame {
 
     public static void main(String[] args){
         BreakoutGame game = new BreakoutGame();
-        game.run();
+           game.run();  
     }
 
     /**
@@ -60,9 +57,6 @@ public class BreakoutGame {
     public void run() {
         canvas.animate(() -> {
             moveBall(ball);
-            if (ball.getLifeCount() == 4 ) {
-                this.reset();
-            }
         });
         canvas.onMouseMove((event) -> {
             movePaddle(paddle, event.getPosition());
@@ -123,20 +117,20 @@ public class BreakoutGame {
     /**
      * Displays a losing message to the user.
      */
-    public void loseGame() {
+    public boolean loseGame() {
         canvas.removeAll();
         GraphicsText lose = new GraphicsText("You Lost!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2);
         canvas.add(lose);
-        canvas.draw();
-        canvas.pause(1000);
+        return true;
     }
 
     /**
      * Displays a winning message to the user.
      */
-    public void winGame() {
+    public boolean winGame() {
         canvas.removeAll();
         GraphicsText win = new GraphicsText("You Won!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2);
         canvas.add(win);
+        return true;
     }
 }
